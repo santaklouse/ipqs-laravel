@@ -1,0 +1,37 @@
+{
+  "name": "santaklouse/ipqs-laravel",
+  "description": "A simple and modern wrapper for the IPQualityScore (IPQS) API, tailored for Laravel.",
+  "type": "library",
+  "keywords": ["ipqs", "ipqualityscore", "laravel", "fraud", "proxy", "vpn", "email-validation", "phone-validation"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alex N",
+      "email": "alexnevpryaga@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "require-dev": {
+    "laravel/framework": "^9.0|^10.0|^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "IpqsLaravel\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "IpqsLaravel\\IpqsServiceProvider"
+      ],
+      "aliases": {
+        "Ipqs": "IpqsLaravel\\Facades\\Ipqs"
+      }
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
