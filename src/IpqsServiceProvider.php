@@ -18,13 +18,9 @@ class IpqsServiceProvider extends ServiceProvider
         $this->app->singleton(IpqsService::class, function ($app) {
             $config = $app['config']->get('ipqs');
 
-            if (empty($config['api_key'])) {
-                throw new \InvalidArgumentException('IPQS API key not configured. Please publish the config and set IPQS_API_KEY in your .env file.');
-            }
-
             return new IpqsService(
                 new Client(['timeout' => $config['timeout'] ?? 10.0]),
-                $config['api_key']
+                $config['api_key'] ?? null
             );
         });
     }

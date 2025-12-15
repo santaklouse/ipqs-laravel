@@ -27,6 +27,8 @@ class IpqsService
      */
     protected function request(string $endpoint, array $params = []): array
     {
+        $this->assertConfigured();
+
         $params['key'] = $this->apiKey;
         $url = $this->baseUrl . $endpoint;
 
@@ -58,6 +60,13 @@ class IpqsService
             throw new IpqsException('HTTP request to IPQS failed: ' . $e->getMessage());
         } catch (GuzzleException $e) {
             throw new IpqsException('HTTP request to IPQS failed: ' . $e->getMessage());
+        }
+    }
+
+    private function assertConfigured(): void
+    {
+        if (empty($this->apiKey)) {
+            throw new \RuntimeException('IPQS API key not configured');
         }
     }
 
